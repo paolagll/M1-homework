@@ -13,11 +13,12 @@ function BinarioADecimal(num) {
 function DecimalABinario(num) {
   // tu codigo aca
   let bin = [];
-  while(num > 0){
-    bin.push(num % 2);
-    num= Math.floor(num/2)
+  //Dividimos num entre 2 hasta llegar a 0
+  while(num > 0){ //mientras num sea menor a 0 lo divido por 2
+    bin.push(num % 2); //1ero el resto de num lo pusheo al array
+    num= Math.floor(num/2); // luego num pasa a ser el resultado de la division
   }
-  return bin.reverse().join('')
+  return bin.reverse().join(''); // retorno el array al reves y como string
 }
 
 
