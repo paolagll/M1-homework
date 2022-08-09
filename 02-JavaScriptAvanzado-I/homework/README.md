@@ -27,6 +27,10 @@ var c = function(a, b, c) {
 c(8,9,10);
 console.log(b);
 console.log(x);
+ 
+ // 10,8,8,9
+ // 10
+ // 1
 ```
 
 ```javascript
@@ -36,14 +40,21 @@ foo();
 function foo() { console.log('Hola!'); }
 var bar = 1;
 baz = 2;
+
+// bar
+// 2
+// 'Hola!'
 ```
 
 ```javascript
 var instructor = "Tony";
+//if no abre otro contexto,asi que por eso la nueva var si pisa la anterior.
 if(true) {
     var instructor = "Franco";
 }
 console.log(instructor);
+
+// Franco
 ```
 
 ```javascript
@@ -54,43 +65,53 @@ console.log(instructor);
       var instructor = "Franco";
       console.log(instructor);
    }
-})();
+})(); // Funcion auto-invocada, se ejecuta de una
 console.log(instructor);
+
+// Tony
+//franco
+// Tony
 ```
 
 ```javascript
 var instructor = "Tony";
 let pm = "Franco";
+//blocke nuevo creado por if (no contexto)
 if (true) {
-    var instructor = "The Flash";
-    let pm = "Reverse Flash";
+    var instructor = "The Flash"; //el var se pisa
+    let pm = "Reverse Flash"; // el let NO se pisa, no tiene hoisting
     console.log(instructor);
     console.log(pm);
 }
 console.log(instructor);
 console.log(pm);
+
+// "The Flash"
+// "Reverse Flash"
+//"The Flash"
+// Franco
 ```
 ### Coerción de Datos
 
 ¿Cuál crees que será el resultado de la ejecución de estas operaciones?:
 
 ```javascript
-6 / "3"
-"2" * "3"
-4 + 5 + "px"
-"$" + 4 + 5
-"4" - 2
-"4px" - 2
-7 / 0
-{}[0]
-parseInt("09")
-5 && 2
-2 && 5
-5 || 0
-0 || 5
-[3]+[3]-[10]
-3>2>1
-[] == ![]
+6 / "3" // 2
+"2" * "3" // 6
+4 + 5 + "px" // 9px
+"$" + 4 + 5 // $45
+"4" - 2 // 2
+"4px" - 2 // NaN ->no es un numero
+7 / 0 // Infinity
+{}[0] // undefined
+parseInt("09") // 9 
+5 && 2 // 2
+2 && 5 // 2
+5 || 0 // 5
+0 || 5 // 0
+[3]+[3]-[10] // 23
+3>2>1 // 3>2 -> true > 1 -> False
+[] == ![] // True
 ```
 
 > Si te quedó alguna duda repasá con [este artículo](http://javascript.info/tutorial/object-conversion).
@@ -112,6 +133,8 @@ function test() {
 }
 
 test();
+// undefined
+// 2
 ```
 
 Y el de este código? :
@@ -128,6 +151,8 @@ function getFood(food) {
 }
 
 getFood(false);
+
+// 'Meow Mix'
 ```
 
 
@@ -147,11 +172,11 @@ var obj = {
    }
 };
 
-console.log(obj.prop.getFullname());
+console.log(obj.prop.getFullname()); // Aurelio de Rosa
 
 var test = obj.prop.getFullname;
 
-console.log(test());
+console.log(test()); // Undef
 ```
 
 ### Event loop
