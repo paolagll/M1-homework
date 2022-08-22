@@ -13,6 +13,15 @@
 
 function BinarySearchTree() {}
 
+BinarySearchTree.prototype.breadthFirstForEach = function(cb, queue =[]){
+  if(this.left !== null) queue.push(this.left);
+  if (this.right !== null) queue.push(this.right);
+  cb(this.value);
+  if (queue.length > 0){
+    queue.shift().breadthFirstForEach (cb ,queue);
+  }
+  
+};
 // No modifiquen nada debajo de esta linea
 // --------------------------------
 
