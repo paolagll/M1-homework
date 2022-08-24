@@ -62,19 +62,12 @@ function insertionSort(array) {
 }
 
 
-function selectionSort(array) {
+function selectionSort(array,arr2 = []) {
   // Implementar el método conocido como selectionSort para ordenar de menor a mayor
   // el array recibido como parámetro utilizando dos arreglos
   // Devolver el array ordenado resultante
   // Tu código:
-  // let arr2 =[]
-  // for (let i = 0; i < array.length; i++) {
-  //   if(array[i] < array[i++]){
-  //     let min = array[i];
-  //     arr2.push(min);
-  //   }
-  //   return arr2;
-  // }
+  //let arr2 =[]
   for (let i = 1; i < array.length; i++) {
     let curr = array[i];
     for (var j = i - 1; j >= 0 && array[j] > curr; j--) {
