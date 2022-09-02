@@ -16,7 +16,17 @@ const {
 
 var countArray = function(array) {
     // Tu código aca:
-    
+    let total = 0;
+
+    array.forEach(function (element){
+        if(Array.isArray(element)){
+            total += countArray(element)
+        } else{
+            total += element;
+        }
+    });
+
+    return total;
 }
 
 
@@ -39,7 +49,15 @@ var countArray = function(array) {
 
 var countProps = function(obj) {
     // Tu código aca:
-
+    let total = Object.keys(obj).length;
+   //for especial para iterar en objetos
+    for(let prop in obj){
+        //revisa que no sea un objeto o un array.
+        if(typeof obj[prop] === 'object' && !Array.isArray(obj[prop])){
+            total += countProps(obj[prop])
+        }
+    }
+    return total;
 }
 
 
@@ -53,7 +71,18 @@ var countProps = function(obj) {
 
 LinkedList.prototype.changeNotNumbers = function(){
     // Tu código aca:
+    let current = this.head;
+    let counter = 0;
 
+    while (current) {
+        //revisa si el valor no es un numero
+        if (Number.isNaN(Number(current.value))) {
+            current.value = 'Kiricocho';
+            counter ++;
+        }
+        current = current.next;
+    }
+    return counter;
 }
 
 
@@ -68,6 +97,13 @@ LinkedList.prototype.changeNotNumbers = function(){
 var mergeQueues = function(queueOne, queueTwo) {
     // Tu código aca:
 
+    let mergedQueue = new Queue();
+    //para recorrer las queue usamos while
+    while (queueOne.size() || queueTwo.size()){
+        if (queueOne.size()) mergedQueue.enqueue(queueOne.dequeue());
+        if (queueTwo.size()) mergedQueue.enqueue(queueTwo.dequeue());
+    }
+    return mergedQueue;
 }
 
 
@@ -82,14 +118,21 @@ var mergeQueues = function(queueOne, queueTwo) {
 
 var closureMult = function(multiplier) {
     // Tu código aca:
-
+    return function(num) {
+        return multiplier * num;
+    }
 }
 
 // Implementar el método sum dentro del prototype de BinarySearchTree
 // que debe retornar la suma total de los valores dentro de cada nodo del arbol
 BinarySearchTree.prototype.sum = function() {
     // Tu código aca:
-
+    let total = this.value;
+    if(this.right){
+        total += this.right.sum();
+    }
+    if (this.left) total += this.left.sum();
+    return total;
 }
 
 module.exports = {
