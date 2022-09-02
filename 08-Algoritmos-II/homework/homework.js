@@ -22,11 +22,12 @@ function quickSort(array) {
   // } 
   if (array.length <= 1) return array; //la condicion para corte de recursion.
 
-  let pivot = array[Math.floor(Math.random() * array.lenght)];
+  let pivot = array[Math.floor(Math.random() * array.length)];
 
   let left = [];
   let right = [];
   let equal = [];
+  
   for (let i = 0; i < array.length; i++) {
     if(array[i] < pivot){
       left.push(array[i]);
@@ -45,13 +46,13 @@ function mergeSort(array) {
   // el array recibido como parámetro
   // Devolver el array ordenado resultante
   // Tu código:
-  if (array.lenght === 1) return array;
+  if (array.length === 1) return array;
 
   let division = split(array);
   let left = division[0];
   let right = division[1];
 
-  return paste(mergeSort(left), mergeSort(right))
+  return paste(mergeSort(left), mergeSort(right));
 }
 function split(array){
   let middle = Math.floor(array.length / 2);
@@ -74,7 +75,7 @@ function paste(left,right){
       rightIndex++;
     }
   }
-  return array.concat(left.slice(leftIndex)).concat(right.slice(rightIndex))
+  return array.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
 }
 
 // No modificar nada debajo de esta línea
